@@ -31,7 +31,14 @@
 #include "GaugeConfig.h"
 #include "OTA.h"
 #include "Display.h"
-
+///////////////////////////
+#ifdef U8X8_HAVE_HW_SPI
+#include <SPI.h>
+#endif
+#ifdef U8X8_HAVE_HW_I2C
+#include <Wire.h>
+#endif
+////////////////////////////
 CANMessage CANmsg;
 Preferences preferences;
 TaskHandle_t TASK_CAN;
@@ -1309,7 +1316,7 @@ static void renderLeds(int ledType, sensorData *data)
       indLedOff();
       sequentialLed(percent);
 
-      if (newWarning == true)
+ /*     if (newWarning == true)
       {
         digitalWrite(LED_11, HIGH);
       }
@@ -1325,7 +1332,7 @@ static void renderLeds(int ledType, sensorData *data)
       else
       {
         digitalWrite(LED_12, LOW);
-      }
+      }*/
       break;
 
     case 6:
@@ -1334,19 +1341,19 @@ static void renderLeds(int ledType, sensorData *data)
 
       if (newWarning == true)
       {
-        digitalWrite(LED_11, HIGH);
+ //       digitalWrite(LED_11, HIGH);
       }
       else
       {
-        digitalWrite(LED_11, LOW);
+ //       digitalWrite(LED_11, LOW);
       }
       if (data->scaledValue > data->alertHigh || data->scaledValue < data->alertLow)
       {
-        digitalWrite(LED_12, HIGH);
+ //       digitalWrite(LED_12, HIGH);
       }
       else
       {
-        digitalWrite(LED_12, LOW);
+ //       digitalWrite(LED_12, LOW);
       }
       break;
 
@@ -2013,7 +2020,6 @@ void canTask(void *pvParameters)
 
 void setup()
 {
-
   #ifdef SERIAL_DEBUG
   Serial.begin(115200);
   Serial.println("Starting ... ");

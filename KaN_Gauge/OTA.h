@@ -150,7 +150,7 @@ void otaSetup(void)
     // Uploading File
     if (upload.status == UPLOAD_FILE_START)
     {
-      digitalWrite(LED_11, HIGH);
+//      digitalWrite(LED_11, HIGH);
 
       // Serial.printf("Update: %s\n", upload.filename.c_str());
       if (!Update.begin(UPDATE_SIZE_UNKNOWN))
@@ -172,7 +172,7 @@ void otaSetup(void)
     // Update finished
     else if (upload.status == UPLOAD_FILE_END)
     {
-      digitalWrite(LED_12, HIGH);
+//      digitalWrite(LED_12, HIGH);
       // If update is a success
       if (Update.end(true))
       {

@@ -2,35 +2,35 @@
 #ifdef PCBREV_1_1_
 
 #define BOOT 0
-#define UART_TX 1
-#define UART_RX 3
+//#define UART_TX 1
+//#define UART_RX 3
 
 // JTAG
-#define MTDI 12
-#define MTCK 13
-#define MTMS 14
-#define MTDO 15
+//#define MTDI 12
+//#define MTCK 13
+//#define MTMS 14
+//#define MTDO 15
 
 // CAN
-#define CAN_RX GPIO_NUM_17
-#define CAN_TX GPIO_NUM_18
+#define CAN_RX GPIO_NUM_21
+#define CAN_TX GPIO_NUM_20
 
 // I2C
-#define I2C_SDA 22
-#define I2C_SCL 23
+//#define I2C_SDA GPIO_NUM_6
+//#define I2C_SCL GPIO_NUM_7
 
 #define OLED_RES 5
 
 // Inputs
-#define USER_INPUT 16
-#define USER_INPUT2 4
+#define USER_INPUT GPIO_NUM_2
+#define USER_INPUT2 GPIO_NUM_3
 
-#define SPARE_1 36
-#define SPARE_2 39
+//#define SPARE_1 36
+//#define SPARE_2 39
 
 // LEDs
 //#define LED_0
-#define LED_1 33
+/*#define LED_1 33
 #define LED_2 32
 #define LED_3 14
 #define LED_4 12
@@ -41,7 +41,7 @@
 #define LED_9 15
 #define LED_10 2
 #define LED_11 21
-#define LED_12 19
+#define LED_12 19*/
 
 void PIN_SETUP()
 {
@@ -53,7 +53,7 @@ void PIN_SETUP()
   digitalWrite(OLED_RES, HIGH);
 
   // Solder jumper
-  pinMode(SPARE_1, INPUT);
+  /*pinMode(SPARE_1, INPUT);
   pinMode(SPARE_2, INPUT);
 
   // LED
@@ -69,22 +69,22 @@ void PIN_SETUP()
   pinMode(LED_9, OUTPUT);
   pinMode(LED_10, OUTPUT);
   pinMode(LED_11, OUTPUT);
-  pinMode(LED_12, OUTPUT);
+  pinMode(LED_12, OUTPUT);*/
 }
 
 #endif
 
 // ---------------------------------- LEDs ------------------------------------------------------
 
-int indicatorLed[] = {LED_1, LED_2, LED_3, LED_4, LED_5, LED_6, LED_7, LED_8, LED_9, LED_10};
-int statusLed[] = {LED_11, LED_12};
-int allLed[] = {LED_11, LED_1, LED_2, LED_3, LED_4, LED_5, LED_6, LED_7, LED_8, LED_9, LED_10, LED_12};
+//int indicatorLed[] = {LED_1, LED_2, LED_3, LED_4, LED_5, LED_6, LED_7, LED_8, LED_9, LED_10};
+//int statusLed[] = {LED_11, LED_12};
+//int allLed[] = {LED_11, LED_1, LED_2, LED_3, LED_4, LED_5, LED_6, LED_7, LED_8, LED_9, LED_10, LED_12};
 
 void ledOn()
 {
   for (int i = 0; i < 12; i++)
   {
-    digitalWrite(allLed[i], HIGH);
+    //digitalWrite(allLed[i], HIGH);
   }
 }
 
@@ -92,7 +92,7 @@ void ledOff()
 {
   for (int i = 0; i < 12; i++)
   {
-    digitalWrite(allLed[i], LOW);
+    //digitalWrite(allLed[i], LOW);
   };
 }
 
@@ -100,7 +100,7 @@ void indLedOff()
 {
   for (int i = 0; i < 10; i++)
   {
-    digitalWrite(indicatorLed[i], LOW);
+    //digitalWrite(indicatorLed[i], LOW);
   };
 }
 
@@ -119,7 +119,7 @@ void sequentialLed(int p)
 
   for (int i = 0; i < p; i++)
   {
-    digitalWrite(indicatorLed[i], HIGH);
+    //digitalWrite(indicatorLed[i], HIGH);
   }
 }
 
@@ -129,7 +129,7 @@ void singleLed(int p)
 
    p = p * 10 / 100;
   
-  digitalWrite(indicatorLed[(p-1)], HIGH);
+  //digitalWrite(indicatorLed[(p-1)], HIGH);
 }
 
 // Illuminate all LED 1-12
@@ -140,7 +140,7 @@ void sequentialLedAll(int p)
 
   for (int i = 0; i < p; i++)
   {
-    digitalWrite(allLed[i], HIGH);
+   // digitalWrite(allLed[i], HIGH);
   }
 }
 
@@ -149,19 +149,19 @@ void singleLedAll(int p)
 {
 
   p = p * 12 / 100;
-  digitalWrite(allLed[(p-1)], HIGH);
+  //digitalWrite(allLed[(p-1)], HIGH);
 }
 
 
 // Toggle the indicator LEDs
 void toggleLeftLed()
 {
-  digitalWrite(LED_11, !digitalRead(LED_11));
+  //digitalWrite(LED_11, !digitalRead(LED_11));
 }
 
 void toggleRightLed()
 {
-  digitalWrite(LED_12, !digitalRead(LED_12));
+ // digitalWrite(LED_12, !digitalRead(LED_12));
 }
 
 
@@ -171,13 +171,13 @@ void ledSweep(int startLed, int endLed, int t, int t2)
 
   for (int i = startLed; i < endLed; i++)
   {
-    digitalWrite(allLed[i], HIGH);
+   // digitalWrite(allLed[i], HIGH);
     delay(t);
   }
 
   for (int i = 0; i < 12; i++)
   {
-    digitalWrite(allLed[i], LOW);
+   // digitalWrite(allLed[i], LOW);
     delay(t2);
   }
 }

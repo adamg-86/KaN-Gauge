@@ -20,8 +20,8 @@ int nvsVersion = 6;
 
 // Select boot logos
 //#define DEFAULT_START
-#define BMM_START
-//#define GG_START
+//#define BMM_START
+#define GG_START
 //#define DEBUG_BUILD
 //#define SERIAL_DEBUG
 

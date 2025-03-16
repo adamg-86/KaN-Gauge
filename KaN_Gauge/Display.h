@@ -9,7 +9,7 @@
 #ifdef SH1106
 U8G2_SH1106_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE, I2C_SCL, I2C_SDA);
 #elif defined(SSD1306)
-U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE, I2C_SCL, I2C_SDA);
+U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R2, /* reset=*/ U8X8_PIN_NONE);
 #endif
 #endif
 
@@ -22,8 +22,6 @@ U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE, I2C_SCL, I2C_SD
 
 void oledSetup(void)
 {
-
-
   u8g2.begin();
   // Setup default configuration for font
   u8g2.setFont(u8g2_font_6x10_tf);
